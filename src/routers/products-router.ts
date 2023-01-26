@@ -8,6 +8,7 @@ productsRouter.get('/', (req:Request, res: Response) => {
     const products = productsRepository.getProducts();
     res.send(products)
 })
+
 productsRouter.post('/', (req:Request, res: Response) => {
     const newProduct = productsRepository.createProduct(req.body.title)
     if(newProduct){

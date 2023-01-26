@@ -11,14 +11,13 @@ export const productsRepository = {
     },
     createProduct(title: string): ProductType | null {
         if (!title.trim()) {
-            return null;
+            return null
         }
-
     const newProduct: ProductType = {
             title,
             id: Date.now().toString()
         }
         products.unshift(newProduct)
-        return newProduct;
+        return newProduct
     }
 }

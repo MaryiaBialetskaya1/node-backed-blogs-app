@@ -3,6 +3,9 @@ import {productsRouter} from "./routers/products-router";
 const app = express()
 const port = process.env.PORT || 3003
 
+const parserMiddleware = express.json()
+app.use(parserMiddleware)
+
 app.get('/', (req:Request, res:Response) => {
     res.send('Hello blogs project!!!')
 })

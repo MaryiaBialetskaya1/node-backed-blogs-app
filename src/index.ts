@@ -8,7 +8,7 @@ const app = express()
 const jsonBodyMiddleware = bodyParser.json()
 app.use(jsonBodyMiddleware)
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3007
 
 app.use('/blogs', blogsRouter)
 app.use('/posts', postsRouter)

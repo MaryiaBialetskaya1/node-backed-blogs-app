@@ -14,7 +14,7 @@ app.use('/blogs', blogsRouter)
 app.use('/posts', postsRouter)
 
 app.get('/', (req:Request, res:Response) => {
-    res.send('Hello from IT-Incubator!!!!')
+    res.send('Hello blogs project!!!')
 })
 
 app.delete( '/testing/all-data', async (req: Request, res:Response) =>{

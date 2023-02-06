@@ -34,7 +34,7 @@ export type usersType = {
 const db = client.db('blogsPosts')
 export const blogCollection = db.collection<blogsType>('blogs');
 export const postCollection = db.collection<postsType>('posts');
-export const usresCollection = db.collection<usersType>('users');
+export const usersCollection = db.collection<usersType>('users');
 
 export async function runDb(){
     try{

@@ -8,6 +8,7 @@ export const blogsService  = {
             description: description,
             websiteUrl: websiteUrl,
             createdAt: (new Date(Date.now()).toISOString()),
+            isMembership: false
         }
         return await blogsRepository.createBlog(newBlog);
     },

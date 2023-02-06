@@ -18,4 +18,14 @@ usersRouter.post('/',
                 const newUser = await usersQueryRepo.findUserById(newUserId);
                 res.status(201).json(newUser)
 
-} )
+})
+
+usersRouter.delete('/:id',
+    async (req:Request, res: Response) =>{
+        const isDeleted: boolean = await usersService.deleteUser(req.params.id)
+            if(isDeleted){
+                res.sendStatus(204)
+            } else{
+                res.sendStatus(404)
+            }
+    })

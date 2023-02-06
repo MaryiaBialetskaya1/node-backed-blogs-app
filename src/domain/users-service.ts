@@ -9,5 +9,9 @@ export const usersService = {
             createdAt: (new Date(Date.now()).toISOString()),
         }
         return await usersRepository.createUser(newUser)
+    },
+
+    async deleteUser(id: string): Promise<boolean>{
+        return await usersRepository.deleteUser(id);
     }
 }

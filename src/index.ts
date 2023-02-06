@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import {blogsRouter} from "./routers/blogs-router";
 import {postsRouter} from "./routers/posts-router";
 import {blogCollection, postCollection, runDb} from "./repositories/db";
+import {usersRouter} from "./routers/users-router";
 
 const app = express()
 const jsonBodyMiddleware = bodyParser.json()
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3007
 
 app.use('/blogs', blogsRouter)
 app.use('/posts', postsRouter)
+app.use('/users', usersRouter)
 
 app.get('/', (req:Request, res:Response) => {
     res.send('Hello blogs project!!!')
@@ -22,8 +24,6 @@ app.delete( '/testing/all-data', async (req: Request, res:Response) =>{
     await postCollection.deleteMany({});
     res.send(204)
 })
-
-
 
 const startApp = async () =>{
     await runDb()

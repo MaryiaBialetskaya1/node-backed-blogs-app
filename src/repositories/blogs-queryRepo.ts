@@ -8,7 +8,7 @@ type ViewBlogType = {
     description: string
     websiteUrl: string
     createdAt: string
-    isMembership: boolean
+    isMembership: false
 };
 
 type BlogDbType = {
@@ -17,7 +17,7 @@ type BlogDbType = {
     description: string
     websiteUrl: string
     createdAt: string
-    isMembership: boolean
+    isMembership: false
 };
 
 export const blogsQueryRepo = {

@@ -43,5 +43,22 @@ export const usersQueryRepo = {
             totalCount: totalCount,
             items: map
         }
+    },
+
+    async findUserById(id: string): Promise<ViewUserType | null>{
+        const foundUser = await usersCollection.findOne({_id: new ObjectId(id)})
+        if(!foundUser?._id){
+            return null
+        } else{
+            return this.userWithReplacedId(foundUser)
+        }
+    },
+    userWithReplacedId (object: UserDbType): ViewUserType{
+        return {
+            id: object._id.toString(),
+            login: object.login,
+            email: object.email,
+            createdAt: object.createdAt
+        }
     }
 }

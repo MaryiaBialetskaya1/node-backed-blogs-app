@@ -2,7 +2,7 @@ import express, {Request, Response} from 'express'
 import bodyParser from 'body-parser'
 import {blogsRouter} from "./routers/blogs-router";
 import {postsRouter} from "./routers/posts-router";
-import {blogCollection, postCollection, runDb} from "./repositories/db";
+import {blogCollection, postCollection, runDb, usersCollection} from "./repositories/db";
 import {usersRouter} from "./routers/users-router";
 
 const app = express()
@@ -22,6 +22,7 @@ app.get('/', (req:Request, res:Response) => {
 app.delete( '/testing/all-data', async (req: Request, res:Response) =>{
     await blogCollection.deleteMany({});
     await postCollection.deleteMany({});
+    await usersCollection.deleteMany({});
     res.send(204)
 })
 

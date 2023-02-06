@@ -8,7 +8,7 @@ type ViewBlogType = {
     description: string
     websiteUrl: string
     createdAt: string
-    isMembership: true
+    isMembership: boolean
 };
 
 type BlogDbType = {
@@ -17,7 +17,7 @@ type BlogDbType = {
     description: string
     websiteUrl: string
     createdAt: string
-    isMembership: true
+    isMembership: boolean
 };
 
 export const blogsQueryRepo = {
@@ -39,7 +39,7 @@ export const blogsQueryRepo = {
                 description: blog.description,
                 websiteUrl: blog.websiteUrl,
                 createdAt: blog.createdAt,
-                isMembership: true
+                isMembership: blog.isMembership
             }
         });
         return{
@@ -96,7 +96,7 @@ export const blogsQueryRepo = {
             description: object.description,
             websiteUrl: object.websiteUrl,
             createdAt: object.createdAt,
-            isMembership: true
+            isMembership: object.isMembership
         }
     }
 }

@@ -14,7 +14,7 @@ export type blogsType = {
     description: string
     websiteUrl: string
     createdAt: string
-    isMembership: true
+    isMembership: boolean
 }
 
 export type postsType = {

@@ -25,15 +25,23 @@ export type postsType = {
     createdAt: string
 }
 
+export type usersType = {
+    login: string
+    email: string
+    createdAt: string
+}
+
 const db = client.db('blogsPosts')
 export const blogCollection = db.collection<blogsType>('blogs');
 export const postCollection = db.collection<postsType>('posts');
+export const usresCollection = db.collection<usersType>('users');
 
 export async function runDb(){
     try{
         await client.connect();
         await client.db("blogs").command({ping: 1});
         await client.db("posts").command({ping: 1});
+        await client.db("users").command({ping: 1});
         console.log("✔ Connected successfully to mongo server");
     } catch {
         console.log("❗ No connection with db");

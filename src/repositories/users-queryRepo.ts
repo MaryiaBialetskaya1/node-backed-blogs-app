@@ -17,8 +17,18 @@ type UserDbType = {
 }
 
 export const usersQueryRepo = {
-    async getAllUsers(pageNumber: number, pageSize: number, sortBy: string, sortDirection: 'asc' | 'desc', searchNameTerm?: string){
-        const filter = searchNameTerm ? {name: {$regex: searchNameTerm, $options: 'i'}} : {};
+    async getAllUsers(pageNumber: number, pageSize: number, sortBy: string, sortDirection: 'asc' | 'desc', searchLoginTerm?: string, searchEmailTerm?: string){
+        //
+        // {
+        //     $and: [
+        //         {login: new RegExp(queryAll.searchLoginTerm, 'gi')},
+        //         {email: new RegExp(queryAll.searchEmailTerm, 'gi')}
+        //     ]
+        // }
+
+        const filter = searchLoginTerm ? {name: {$regex: searchLoginTerm, $options: 'i'}} : {};
+
+
 
         const users = await usersCollection
             .find(filter)

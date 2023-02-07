@@ -10,6 +10,7 @@ type QueryValidationResult = {
     sortDirection: SortDirection,
     searchNameTerm: string
     searchEmailTerm: string
+    searchLoginTerm: string
 }
 
 export const queryValidationMiddleware = (query: any): QueryValidationResult => {
@@ -26,6 +27,7 @@ export const queryValidationMiddleware = (query: any): QueryValidationResult => 
     let sortDirection =  typeof query.sortDirection  === "string" ? query.sortDirection : 'desc'
     const searchNameTerm = typeof query.searchNameTerm === "string" ? query.searchNameTerm?.toString(): ''
     const searchEmailTerm = typeof query.searchEmailTerm === "string" ? query.searchEmailTerm?.toString() : ''
+    const searchLoginTerm = typeof query.searchLoginTerm === "string" ? query.searchLoginTerm?.toString() : ''
 
     return {
         pageNumber,
@@ -33,6 +35,7 @@ export const queryValidationMiddleware = (query: any): QueryValidationResult => 
         sortBy,
         sortDirection,
         searchNameTerm,
-        searchEmailTerm
+        searchEmailTerm,
+        searchLoginTerm
     }
 }

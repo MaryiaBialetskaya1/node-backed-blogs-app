@@ -9,6 +9,7 @@ type QueryValidationResult = {
     sortBy: string,
     sortDirection: SortDirection,
     searchNameTerm: string
+    searchEmailTerm: string
 }
 
 export const queryValidationMiddleware = (query: any): QueryValidationResult => {
@@ -24,12 +25,14 @@ export const queryValidationMiddleware = (query: any): QueryValidationResult => 
     let sortBy =  typeof query.sortBy  === "string" ? query.sortBy : 'createdAt'
     let sortDirection =  typeof query.sortDirection  === "string" ? query.sortDirection : 'desc'
     const searchNameTerm = typeof query.searchNameTerm === "string" ? query.searchNameTerm?.toString(): ''
+    const searchEmailTerm = typeof query.searchEmailTerm === "string" ? query.searchEmailTerm?.toString() : ''
 
     return {
         pageNumber,
         pageSize,
         sortBy,
         sortDirection,
-        searchNameTerm
+        searchNameTerm,
+        searchEmailTerm
     }
 }

@@ -2,6 +2,7 @@ import {Request, Response,Router} from "express";
 import {usersService} from "../domain/users-service";
 import {queryValidationMiddleware} from "../middlewares/queryValidationMiddleware";
 import {usersQueryRepo} from "../repositories/users-queryRepo";
+import {checkAuthorizationMiddleware} from "../middlewares/checkAuthorizationMiddleware";
 
 export const usersRouter = Router({})
 
@@ -13,14 +14,16 @@ usersRouter.get('/',
 })
 
 usersRouter.post('/',
+    checkAuthorizationMiddleware,
     async (req: Request, res: Response) => {
-                const newUserId = await usersService.createUser(req.body.login, req.body.email);
-                const newUser = await usersQueryRepo.findUserById(newUserId);
-                res.status(201).json(newUser)
+        const newUserId = await usersService.createUser(req.body.login, req.body.email);
+        const newUser = await usersQueryRepo.findUserById(newUserId);
+        res.status(201).json(newUser)
 
 })
 
 usersRouter.delete('/:id',
+    checkAuthorizationMiddleware,
     async (req:Request, res: Response) =>{
         const isDeleted: boolean = await usersService.deleteUser(req.params.id)
             if(isDeleted){

@@ -26,7 +26,7 @@ export const usersQueryRepo = {
         //     ]
         // }
 
-        const filter = searchLoginTerm ? {name: {$regex: searchLoginTerm, $options: 'i'}} : {} || searchEmailTerm ? {name: {$regex: searchEmailTerm, $options: 'i'}} : {};
+        const filter = searchLoginTerm ? {name: {$regex: searchLoginTerm, $options: 'i'}} : {} ;
 
         const users = await usersCollection
             .find(filter)
